@@ -1,274 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Love Now Foundation – Spreading Love, Building Community</title>
-<meta name="description" content="The Love Now Foundation empowers communities through love, compassion, and action. Join us in creating lasting change for families and individuals in need.">
-<meta name="keywords" content="love now foundation, nonprofit, community, compassion, giving, charity, mental health, youth empowerment">
-<meta property="og:title" content="The Love Now Foundation">
-<meta property="og:description" content="Spreading Love, Building Community – Join us in making a difference today.">
-<meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --purple:      #7C3AED;
-    --purple-light:#EDE9FE;
-    --purple-dark: #4C1D95;
-    --blue:        #2563EB;
-    --blue-light:  #DBEAFE;
-    --blue-dark:   #1E3A8A;
-    --turquoise:   #14B8A6;
-    --turquoise-light: #CCFBF1;
-    --turquoise-dark:  #0F766E;
-    --cream:      #F8FAFC;
-    --text:       #1E293B;
-    --text-mid:   #334155;
-    --text-muted: #64748B;
-    --white:      #FFFFFF;
-    --border:     rgba(30,41,59,0.12);
-  }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--text); font-size: 16px; line-height: 1.7; }
-
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(237,233,254,0.96); /* purple-light */
-    backdrop-filter: blur(6px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 70px;
-  }
-  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--purple-dark); letter-spacing: 0.02em; text-decoration: none; display: flex; align-items: center; gap: 10px; }
-  .nav-logo span.heart { color: var(--purple); font-size: 1.5rem; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 0.875rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--blue); }
-  .btn-donate-nav { background: var(--blue); color: var(--white) !important; padding: 9px 22px; border-radius: 30px; transition: background 0.2s, transform 0.15s !important; }
-  .btn-donate-nav:hover { background: var(--blue-dark) !important; transform: translateY(-1px); }
-
-  .hero {
-    min-height: 100vh; display: flex; align-items: center;
-    background: linear-gradient(135deg, var(--purple-light) 0%, var(--blue-light) 50%, var(--turquoise-light) 100%);
-    padding: 100px 5% 60px; position: relative; overflow: hidden;
-  }
-  .hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(124,58,237,0.07) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
-  .hero::after { content: '♥'; position: absolute; bottom: 60px; right: 8%; font-size: 18rem; color: rgba(20,184,166,0.07); font-family: serif; pointer-events: none; line-height: 1; }
-  .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; width: 100%; }
-  .hero-tag { display: inline-block; background: var(--blue-light); color: var(--blue-dark); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 16px; border-radius: 30px; margin-bottom: 1.2rem; }
-  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 4.5vw, 3.6rem); line-height: 1.2; color: var(--text); margin-bottom: 1.2rem; }
-  .hero h1 em { font-style: italic; color: var(--purple); }
-  .hero p { font-size: 1.1rem; color: var(--text-mid); margin-bottom: 2rem; max-width: 480px; }
-  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary { display: inline-block; background: var(--purple); color: var(--white); padding: 14px 32px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 18px rgba(124,58,237,0.18); }
-  .btn-primary:hover { background: var(--blue); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(37,99,235,0.22); }
-  .btn-secondary { display: inline-block; border: 2px solid var(--turquoise); color: var(--turquoise); padding: 13px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; transition: background 0.2s, color 0.2s, transform 0.15s; }
-  .btn-secondary:hover { background: var(--turquoise); color: var(--white); transform: translateY(-2px); }
-  .hero-image-wrap { position: relative; animation: floatIn 0.9s ease forwards; opacity: 0; transform: translateY(20px); animation-delay: 0.3s; }
-  @keyframes floatIn { to { opacity:1; transform: translateY(0); } }
-  .hero-img-card { background: var(--white); border-radius: 24px; overflow: hidden; box-shadow: 0 24px 60px rgba(44,33,24,0.15); }
-  .hero-img-placeholder { width: 100%; height: 420px; background: linear-gradient(145deg, var(--purple) 0%, var(--blue) 40%, var(--turquoise) 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
-  .hero-img-placeholder .big-heart { font-size: 6rem; color: rgba(255,255,255,0.85); line-height: 1; text-shadow: 0 2px 16px var(--purple); }
-  .hero-img-placeholder p { color: rgba(255,255,255,0.9); font-family: 'Playfair Display', serif; font-size: 1.2rem; letter-spacing: 0.03em; margin: 0; max-width: none; }
-  .hero-stat-pill { position: absolute; bottom: -18px; left: -18px; background: var(--white); border-radius: 16px; padding: 14px 20px; box-shadow: 0 8px 30px rgba(20,184,166,0.12); display: flex; align-items: center; gap: 12px; }
-  .pill-num { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--turquoise); line-height: 1; }
-  .pill-label { font-size: 0.75rem; color: var(--text-muted); line-height: 1.3; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
-
-  .ticker { background: var(--purple); color: var(--white); padding: 14px 5%; overflow: hidden; white-space: nowrap; }
-  .ticker-inner { display: inline-block; animation: ticker 28s linear infinite; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
-  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Love Now Foundation – Spreading Love, Building Community</title>
+  <meta name="description" content="The Love Now Foundation empowers communities through love, compassion, and action. Join us in creating lasting change for families and individuals in need.">
+  <meta name="keywords" content="love now foundation, nonprofit, community, compassion, giving, charity, mental health, youth empowerment">
+  <meta property="og:title" content="The Love Now Foundation">
+  <meta property="og:description" content="Spreading Love, Building Community – Join us in making a difference today.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="navbar.js" defer></script>
+</head>
+<body>
+  <site-navbar></site-navbar>
+
+  <main>
+    <section id="home" class="hero" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <span class="hero-tag">Love in Action</span>
+          <h1 id="hero-heading">Spreading Love, <em>Building Community</em></h1>
+          <p>The Love Now Foundation empowers people through compassion, practical support, and programs that help communities heal and thrive.</p>
+          <div class="hero-btns">
+            <a class="btn-primary" href="#donate">Donate Now</a>
+            <a class="btn-secondary" href="mission.html">Explore Our Mission</a>
+          </div>
+        </div>
+        <div class="hero-image-wrap" aria-hidden="true">
+          <div class="hero-img-card">
+            <div class="hero-img-placeholder">
+              <span class="big-heart">♥</span>
+              <p>Love grows where people gather.</p>
+            </div>
+          </div>
+          <div class="hero-stat-pill">
+            <span class="pill-num">12k+</span>
+            <span class="pill-label">Lives touched<br>with care</span>
+          </div>
+        </div>
       </div>
-      <div class="mcard fade-up delay-3">
-        <div class="mcard-icon">✨</div>
-        <h3>Lasting Impact</h3>
-        <p>Every act of love creates ripples. We focus on long-term transformation, not just short-term relief.</p>
+    </section>
+
+    <div class="ticker" aria-label="Foundation highlights">
+      <div class="ticker-inner">
+        Community Care <span class="ticker-dot">•</span> Mental Wellness <span class="ticker-dot">•</span> Youth Empowerment <span class="ticker-dot">•</span> Family Support <span class="ticker-dot">•</span>
+        Community Care <span class="ticker-dot">•</span> Mental Wellness <span class="ticker-dot">•</span> Youth Empowerment <span class="ticker-dot">•</span> Family Support
       </div>
     </div>
-  </div>
-</section>
 
-<section id="impact" class="impact" aria-labelledby="impact-heading">
-  <div class="impact-inner">
-    <div class="centered fade-up">
-      <span class="section-tag">Our Impact</span>
-      <h2 class="section-title" id="impact-heading" style="color:white; margin-left:auto; margin-right:auto;">Love Measured in Real Lives Changed</h2>
-      <p class="section-lead">Every number represents a person — a family, a child, a community. Here's what love has built.</p>
-    </div>
-    <div class="stats-grid fade-up">
-      <div class="stat-box"><div class="stat-num">12,400+</div><div class="stat-label">Lives Impacted</div></div>
-      <div class="stat-box"><div class="stat-num">47</div><div class="stat-label">Communities Served</div></div>
-      <div class="stat-box"><div class="stat-num">$2.1M</div><div class="stat-label">Resources Distributed</div></div>
-      <div class="stat-box"><div class="stat-num">850+</div><div class="stat-label">Volunteers &amp; Partners</div></div>
-    </div>
-  </div>
-</section>
-
-<section id="programs" aria-labelledby="programs-heading">
-  <div class="programs-inner">
-    <div class="centered fade-up">
-      <span class="section-tag">What We Do</span>
-      <h2 class="section-title" id="programs-heading">Programs Rooted in Love</h2>
-      <p class="section-lead">Each of our programs is designed to address the whole person — mind, body, and spirit — with love at the center of everything we do.</p>
-    </div>
-    <div class="programs-grid">
-      <article class="prog-card fade-up delay-1">
-        <div class="prog-header ph1"><span class="prog-header-tag">Mental Wellness</span></div>
-        <div class="prog-body">
-          <h3>Healing Hearts Initiative</h3>
-          <p>Free mental health resources, peer support circles, and counseling services for individuals who cannot afford traditional care.</p>
-          <a href="#" class="prog-link">Learn More →</a>
+    <section id="mission" aria-labelledby="mission-heading">
+      <div class="mission-grid">
+        <div class="mission-copy fade-up">
+          <span class="section-tag">Our Mission</span>
+          <h2 class="section-title" id="mission-heading">We meet urgent needs with tenderness and long-term care.</h2>
+          <p class="section-lead">Our work brings neighbors, volunteers, and partners together to create support systems rooted in dignity, access, and unconditional love.</p>
+          <a class="btn-secondary" href="#programs">See Programs</a>
         </div>
-      </article>
-      <article class="prog-card fade-up delay-2">
-        <div class="prog-header ph2"><span class="prog-header-tag">Youth Empowerment</span></div>
-        <div class="prog-body">
-          <h3>Rise Up Youth Program</h3>
-          <p>Mentorship, skill-building workshops, and scholarships for young people aged 13–24 to help them discover their purpose and potential.</p>
-          <a href="#" class="prog-link">Learn More →</a>
+        <div class="mission-visual">
+          <div class="mcard fade-up delay-1">
+            <div class="mcard-icon">🤝</div>
+            <h3>Community First</h3>
+            <p>We listen before we act, building programs around real needs voiced by the people we serve.</p>
+          </div>
+          <div class="mcard fade-up delay-2">
+            <div class="mcard-icon">💜</div>
+            <h3>Compassionate Care</h3>
+            <p>We offer emotional and practical support without judgment, stigma, or barriers.</p>
+          </div>
+          <div class="mcard fade-up delay-3">
+            <div class="mcard-icon">✨</div>
+            <h3>Lasting Impact</h3>
+            <p>Every act of love creates ripples. We focus on long-term transformation, not just short-term relief.</p>
+          </div>
         </div>
-      </article>
-      <article class="prog-card fade-up delay-3">
-        <div class="prog-header ph3"><span class="prog-header-tag">Family Support</span></div>
-        <div class="prog-body">
-          <h3>Family Roots Program</h3>
-          <p>Essential resources, parenting workshops, food assistance, and community connection for families navigating hardship.</p>
-          <a href="#" class="prog-link">Learn More →</a>
+      </div>
+    </section>
+
+    <section id="impact" class="impact" aria-labelledby="impact-heading">
+      <div class="impact-inner">
+        <div class="centered fade-up">
+          <span class="section-tag">Our Impact</span>
+          <h2 class="section-title" id="impact-heading">Love Measured in Real Lives Changed</h2>
+          <p class="section-lead">Every number represents a person — a family, a child, a community. Here's what love has built.</p>
         </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="stories" class="testimonials" aria-labelledby="stories-heading">
-  <div class="testimonials-inner">
-    <div class="centered fade-up">
-      <span class="section-tag">Stories of Love</span>
-      <h2 class="section-title" id="stories-heading">The People Behind the Numbers</h2>
-      <p class="section-lead">Every life changed is a story worth telling. Here are just a few of the voices from our community.</p>
-    </div>
-    <div class="testimonials-grid">
-      <blockquote class="t-card fade-up delay-1">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-text">The Love Now Foundation didn't just give me resources — they gave me back my sense of worth. I didn't know a nonprofit could feel like family until I found them.</p>
-        <div class="t-author">
-          <div class="t-avatar av1">MR</div>
-          <div><div class="t-name">Maria R.</div><div class="t-role">Program Participant, 2023</div></div>
+        <div class="stats-grid fade-up">
+          <div class="stat-box"><div class="stat-num">12,400+</div><div class="stat-label">Lives Impacted</div></div>
+          <div class="stat-box"><div class="stat-num">47</div><div class="stat-label">Communities Served</div></div>
+          <div class="stat-box"><div class="stat-num">$2.1M</div><div class="stat-label">Resources Distributed</div></div>
+          <div class="stat-box"><div class="stat-num">850+</div><div class="stat-label">Volunteers &amp; Partners</div></div>
         </div>
-      </blockquote>
-      <blockquote class="t-card fade-up delay-2">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-text">I started volunteering here thinking I'd help others. Two years later, I realize this community has transformed me just as much as I've given to it.</p>
-        <div class="t-author">
-          <div class="t-avatar av2">JT</div>
-          <div><div class="t-name">James T.</div><div class="t-role">Volunteer &amp; Mentor</div></div>
+      </div>
+    </section>
+
+    <section id="programs" aria-labelledby="programs-heading">
+      <div class="programs-inner">
+        <div class="centered fade-up">
+          <span class="section-tag">What We Do</span>
+          <h2 class="section-title" id="programs-heading">Programs Rooted in Love</h2>
+          <p class="section-lead">Each program is designed to address the whole person — mind, body, and spirit — with love at the center of everything we do.</p>
         </div>
-      </blockquote>
-      <blockquote class="t-card fade-up delay-3">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-text">The Rise Up program helped my daughter find her confidence and a full scholarship. We will never stop being grateful for what love in action truly looks like.</p>
-        <div class="t-author">
-          <div class="t-avatar av3">CA</div>
-          <div><div class="t-name">Carmen A.</div><div class="t-role">Parent, Youth Program</div></div>
+        <div class="programs-grid">
+          <article class="prog-card fade-up delay-1">
+            <div class="prog-header ph1"><span class="prog-header-tag">Mental Wellness</span></div>
+            <div class="prog-body">
+              <h3>Healing Hearts Initiative</h3>
+              <p>Free mental health resources, peer support circles, and counseling services for individuals who cannot afford traditional care.</p>
+              <a href="#" class="prog-link">Learn More →</a>
+            </div>
+          </article>
+          <article class="prog-card fade-up delay-2">
+            <div class="prog-header ph2"><span class="prog-header-tag">Youth Empowerment</span></div>
+            <div class="prog-body">
+              <h3>Rise Up Youth Program</h3>
+              <p>Mentorship, skill-building workshops, and scholarships for young people aged 13–24 to help them discover their purpose and potential.</p>
+              <a href="#" class="prog-link">Learn More →</a>
+            </div>
+          </article>
+          <article class="prog-card fade-up delay-3">
+            <div class="prog-header ph3"><span class="prog-header-tag">Family Support</span></div>
+            <div class="prog-body">
+              <h3>Family Roots Program</h3>
+              <p>Essential resources, parenting workshops, food assistance, and community connection for families navigating hardship.</p>
+              <a href="#" class="prog-link">Learn More →</a>
+            </div>
+          </article>
         </div>
-      </blockquote>
-    </div>
-  </div>
-</section>
+      </div>
+    </section>
 
-<section id="donate" class="donate-cta" aria-labelledby="donate-heading">
-  <h2 id="donate-heading">Your Love Can Change a Life Today</h2>
-  <p>100% of every dollar goes directly to our programs and the people who need them most. Give now — love can't wait.</p>
-  <div class="donate-amounts" role="group" aria-label="Select a donation amount">
-    <button class="amount-btn" onclick="setAmount(this)">$10</button>
-    <button class="amount-btn active" onclick="setAmount(this)">$25</button>
-    <button class="amount-btn" onclick="setAmount(this)">$50</button>
-    <button class="amount-btn" onclick="setAmount(this)">$100</button>
-    <button class="amount-btn" onclick="setAmount(this)">Other</button>
-  </div>
-  <a href="#" class="btn-donate-main">Donate with Love ♥</a>
-</section>
+    <section id="stories" class="testimonials" aria-labelledby="stories-heading">
+      <div class="testimonials-inner">
+        <div class="centered fade-up">
+          <span class="section-tag">Stories of Transformation</span>
+          <h2 class="section-title" id="stories-heading">The People Behind the Numbers</h2>
+          <p class="section-lead">Every life changed is a story worth telling. Here are just a few of the voices from our community.</p>
+        </div>
+        <div class="testimonials-grid">
+          <blockquote class="t-card fade-up delay-1">
+            <div class="t-stars">★★★★★</div>
+            <p class="t-text">The Love Now Foundation didn't just give me resources — they gave me back my sense of worth. I didn't know a nonprofit could feel like family until I found them.</p>
+            <div class="t-author">
+              <div class="t-avatar av1">MR</div>
+              <div><div class="t-name">Maria R.</div><div class="t-role">Program Participant, 2023</div></div>
+            </div>
+          </blockquote>
+          <blockquote class="t-card fade-up delay-2">
+            <div class="t-stars">★★★★★</div>
+            <p class="t-text">I started volunteering here thinking I'd help others. Two years later, I realize this community has transformed me just as much as I've given to it.</p>
+            <div class="t-author">
+              <div class="t-avatar av2">JT</div>
+              <div><div class="t-name">James T.</div><div class="t-role">Volunteer &amp; Mentor</div></div>
+            </div>
+          </blockquote>
+          <blockquote class="t-card fade-up delay-3">
+            <div class="t-stars">★★★★★</div>
+            <p class="t-text">The Rise Up program helped my daughter find her confidence and a full scholarship. We will never stop being grateful for what love in action truly looks like.</p>
+            <div class="t-author">
+              <div class="t-avatar av3">CA</div>
+              <div><div class="t-name">Carmen A.</div><div class="t-role">Parent, Youth Program</div></div>
+            </div>
+          </blockquote>
+        </div>
+      </div>
+    </section>
 
-<section class="newsletter" aria-labelledby="nl-heading">
-  <div class="newsletter-inner fade-up">
-    <span class="section-tag">Stay Connected</span>
-    <h2 class="section-title" id="nl-heading" style="max-width:100%">Join Our Community of Love</h2>
-    <p class="section-lead" style="max-width:100%">Get stories of impact, program updates, and ways to get involved delivered to your inbox. No spam — just love.</p>
-    <form class="nl-form" onsubmit="handleNL(event)" aria-label="Newsletter signup">
-      <input type="email" placeholder="Your email address" required aria-label="Email address">
-      <button type="submit">Subscribe</button>
-    </form>
-  </div>
-</section>
+    <section id="donate" class="donate-cta" aria-labelledby="donate-heading">
+      <h2 id="donate-heading">Your Love Can Change a Life Today</h2>
+      <p>100% of every dollar goes directly to our programs and the people who need them most. Give now — love can't wait.</p>
+      <div class="donate-amounts" role="group" aria-label="Select a donation amount">
+        <button class="amount-btn" type="button" onclick="setAmount(this)">$10</button>
+        <button class="amount-btn active" type="button" onclick="setAmount(this)">$25</button>
+        <button class="amount-btn" type="button" onclick="setAmount(this)">$50</button>
+        <button class="amount-btn" type="button" onclick="setAmount(this)">$100</button>
+        <button class="amount-btn" type="button" onclick="setAmount(this)">Other</button>
+      </div>
+      <a href="#" class="btn-donate-main">Donate with Love ♥</a>
+    </section>
 
-<footer role="contentinfo">
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <a class="nav-logo" href="#home"><span class="heart" aria-hidden="true">♥</span> The Love Now Foundation</a>
-      <p>A 501(c)(3) nonprofit organization dedicated to spreading love through community action, mental wellness support, and youth empowerment.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Navigate</h4>
-      <ul>
-        <li><a href="#mission">Our Mission</a></li>
-        <li><a href="#programs">Programs</a></li>
-        <li><a href="#impact">Our Impact</a></li>
-        <li><a href="#stories">Stories</a></li>
-        <li><a href="#donate">Donate</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Get Involved</h4>
-      <ul>
-        <li><a href="#">Volunteer</a></li>
-        <li><a href="#">Partner With Us</a></li>
-        <li><a href="#">Corporate Giving</a></li>
-        <li><a href="#">Events</a></li>
-        <li><a href="#">Careers</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="mailto:hello@thelovenowfoundation.com">hello@thelovenow<br>foundation.com</a></li>
-        <li><a href="#">Press &amp; Media</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">EIN: 88-XXXXXXX</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2025 The Love Now Foundation. All rights reserved. 501(c)(3) Tax-Exempt Nonprofit.</span>
-    <div class="social-links" aria-label="Social media">
-      <a href="#">Instagram</a>
-      <a href="#">Facebook</a>
-      <a href="#">Twitter</a>
-      <a href="#">LinkedIn</a>
-    </div>
-  </div>
-</footer>
+    <section class="newsletter" aria-labelledby="nl-heading">
+      <div class="newsletter-inner fade-up">
+        <span class="section-tag">Stay Connected</span>
+        <h2 class="section-title" id="nl-heading">Join Our Community of Love</h2>
+        <p class="section-lead">Get stories of impact, program updates, and ways to get involved delivered to your inbox. No spam — just love.</p>
+        <form class="nl-form" onsubmit="handleNL(event)" aria-label="Newsletter signup">
+          <input type="email" placeholder="Your email address" required aria-label="Email address">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+  </main>
 
-<script>
-  function setAmount(el) {
-    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
-    el.classList.add('active');
-  }
-  function handleNL(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('button');
-    btn.textContent = "You're In! ♥";
-    btn.style.background = '#3B6D11';
-    setTimeout(() => { btn.textContent = 'Subscribe'; btn.style.background = ''; }, 3000);
-  }
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-</script>
+  <footer role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="#home"><span class="heart" aria-hidden="true">♥</span> The Love Now Foundation</a>
+        <p>A 501(c)(3) nonprofit organization dedicated to spreading love through community action, mental wellness support, and youth empowerment.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="mission.html">Our Mission</a></li>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#impact">Our Impact</a></li>
+          <li><a href="#stories">Stories</a></li>
+          <li><a href="#donate">Donate</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get Involved</h4>
+        <ul>
+          <li><a href="#">Volunteer</a></li>
+          <li><a href="#">Partner With Us</a></li>
+          <li><a href="#">Corporate Giving</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@thelovenowfoundation.com">hello@thelovenow<br>foundation.com</a></li>
+          <li><a href="#">Press &amp; Media</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">EIN: 88-XXXXXXX</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 The Love Now Foundation. All rights reserved. 501(c)(3) Tax-Exempt Nonprofit.</span>
+      <div class="social-links" aria-label="Social media">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function setAmount(el) {
+      document.querySelectorAll('.amount-btn').forEach((button) => button.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    function handleNL(event) {
+      event.preventDefault();
+      const button = event.target.querySelector('button');
+      button.textContent = "You're In! ♥";
+      button.style.background = '#3B6D11';
+      setTimeout(() => {
+        button.textContent = 'Subscribe';
+        button.style.background = '';
+      }, 3000);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+  </script>
 </body>
 </html>
