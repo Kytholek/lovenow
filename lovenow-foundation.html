@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Love Now Foundation – Spreading Love, Building Community</title>
+<meta name="description" content="The Love Now Foundation empowers communities through love, compassion, and action. Join us in creating lasting change for families and individuals in need.">
+<meta name="keywords" content="love now foundation, nonprofit, community, compassion, giving, charity, mental health, youth empowerment">
+<meta property="og:title" content="The Love Now Foundation">
+<meta property="og:description" content="Spreading Love, Building Community – Join us in making a difference today.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --rose:       #C8524A;
+    --rose-light: #F2E8E7;
+    --rose-dark:  #8B2E28;
+    --gold:       #D4A853;
+    --gold-light: #FAF3E3;
+    --cream:      #FBF7F2;
+    --text:       #2C2118;
+    --text-mid:   #5C4A3A;
+    --text-muted: #9A8070;
+    --white:      #FFFFFF;
+    --border:     rgba(44,33,24,0.12);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--text); font-size: 16px; line-height: 1.7; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(251,247,242,0.96); backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 70px;
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--rose-dark); letter-spacing: 0.02em; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .nav-logo span.heart { color: var(--rose); font-size: 1.5rem; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 0.875rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--rose); }
+  .btn-donate-nav { background: var(--rose); color: var(--white) !important; padding: 9px 22px; border-radius: 30px; transition: background 0.2s, transform 0.15s !important; }
+  .btn-donate-nav:hover { background: var(--rose-dark) !important; transform: translateY(-1px); }
+
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    background: linear-gradient(135deg, #FBF7F2 0%, #F5EDE6 50%, #EFD9D1 100%);
+    padding: 100px 5% 60px; position: relative; overflow: hidden;
+  }
+  .hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(200,82,74,0.07) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+  .hero::after { content: '♥'; position: absolute; bottom: 60px; right: 8%; font-size: 18rem; color: rgba(200,82,74,0.05); font-family: serif; pointer-events: none; line-height: 1; }
+  .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; width: 100%; }
+  .hero-tag { display: inline-block; background: var(--rose-light); color: var(--rose-dark); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 16px; border-radius: 30px; margin-bottom: 1.2rem; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 4.5vw, 3.6rem); line-height: 1.2; color: var(--text); margin-bottom: 1.2rem; }
+  .hero h1 em { font-style: italic; color: var(--rose); }
+  .hero p { font-size: 1.1rem; color: var(--text-mid); margin-bottom: 2rem; max-width: 480px; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { display: inline-block; background: var(--rose); color: var(--white); padding: 14px 32px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 18px rgba(200,82,74,0.25); }
+  .btn-primary:hover { background: var(--rose-dark); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(200,82,74,0.35); }
+  .btn-secondary { display: inline-block; border: 2px solid var(--rose); color: var(--rose); padding: 13px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; transition: background 0.2s, color 0.2s, transform 0.15s; }
+  .btn-secondary:hover { background: var(--rose); color: var(--white); transform: translateY(-2px); }
+  .hero-image-wrap { position: relative; animation: floatIn 0.9s ease forwards; opacity: 0; transform: translateY(20px); animation-delay: 0.3s; }
+  @keyframes floatIn { to { opacity:1; transform: translateY(0); } }
+  .hero-img-card { background: var(--white); border-radius: 24px; overflow: hidden; box-shadow: 0 24px 60px rgba(44,33,24,0.15); }
+  .hero-img-placeholder { width: 100%; height: 420px; background: linear-gradient(145deg, #E8C5C0 0%, #C8877F 40%, #A85248 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+  .hero-img-placeholder .big-heart { font-size: 6rem; color: rgba(255,255,255,0.85); line-height: 1; }
+  .hero-img-placeholder p { color: rgba(255,255,255,0.9); font-family: 'Playfair Display', serif; font-size: 1.2rem; letter-spacing: 0.03em; margin: 0; max-width: none; }
+  .hero-stat-pill { position: absolute; bottom: -18px; left: -18px; background: var(--white); border-radius: 16px; padding: 14px 20px; box-shadow: 0 8px 30px rgba(44,33,24,0.12); display: flex; align-items: center; gap: 12px; }
+  .pill-num { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--rose); line-height: 1; }
+  .pill-label { font-size: 0.75rem; color: var(--text-muted); line-height: 1.3; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .ticker { background: var(--rose); color: var(--white); padding: 14px 5%; overflow: hidden; white-space: nowrap; }
+  .ticker-inner { display: inline-block; animation: ticker 28s linear infinite; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .ticker-dot { margin: 0 2rem; color: rgba(255,255,255,0.5); }
+
+  section { padding: 90px 5%; }
+  .section-tag { display: inline-block; color: var(--rose); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.8rem; }
+  h2.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.25; color: var(--text); margin-bottom: 1rem; max-width: 600px; }
+  .section-lead { font-size: 1.05rem; color: var(--text-mid); max-width: 560px; margin-bottom: 3rem; }
+  .centered { text-align: center; }
+  .centered h2, .centered .section-lead { margin-left: auto; margin-right: auto; }
+
+  .mission-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .mission-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .mcard { border-radius: 16px; padding: 1.8rem 1.4rem; }
+  .mcard:first-child { grid-column: 1/-1; background: var(--rose-light); }
+  .mcard:nth-child(2) { background: var(--gold-light); }
+  .mcard:nth-child(3) { background: #EAF3DE; }
+  .mcard-icon { font-size: 2rem; margin-bottom: 0.6rem; }
+  .mcard h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.4rem; color: var(--text); }
+  .mcard p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; }
+
+  .impact { background: var(--text); color: var(--white); }
+  .impact-inner { max-width: 1100px; margin: 0 auto; }
+  .impact .section-tag { color: var(--gold); }
+  .impact h2 { color: var(--white); }
+  .impact .section-lead { color: rgba(255,255,255,0.65); }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; margin-top: 3rem; }
+  .stat-box { padding: 2.5rem 2rem; background: rgba(255,255,255,0.04); text-align: center; transition: background 0.2s; }
+  .stat-box:hover { background: rgba(200,82,74,0.15); }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--gold); line-height: 1; margin-bottom: 0.4rem; }
+  .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .programs-inner { max-width: 1100px; margin: 0 auto; }
+  .programs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .prog-card { background: var(--white); border-radius: 20px; overflow: hidden; border: 1px solid var(--border); transition: transform 0.25s, box-shadow 0.25s; }
+  .prog-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(44,33,24,0.1); }
+  .prog-header { height: 200px; display: flex; align-items: flex-end; padding: 1.5rem; }
+  .prog-header.ph1 { background: linear-gradient(160deg,#E8B4AF,#C8524A); }
+  .prog-header.ph2 { background: linear-gradient(160deg,#D4C89A,#B8952E); }
+  .prog-header.ph3 { background: linear-gradient(160deg,#A8C5B0,#4A8A60); }
+  .prog-header-tag { background: rgba(255,255,255,0.92); color: var(--text); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; }
+  .prog-body { padding: 1.5rem; }
+  .prog-body h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 0.6rem; }
+  .prog-body p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 1.2rem; }
+  .prog-link { color: var(--rose); font-size: 0.85rem; font-weight: 700; text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; }
+  .prog-link:hover { text-decoration: underline; }
+
+  .testimonials { background: var(--rose-light); }
+  .testimonials-inner { max-width: 1100px; margin: 0 auto; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .t-card { background: var(--white); border-radius: 20px; padding: 2rem; position: relative; }
+  .t-card::before { content: '\201C'; position: absolute; top: 1rem; left: 1.5rem; font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--rose-light); line-height: 1; }
+  .t-text { font-size: 0.95rem; color: var(--text-mid); line-height: 1.75; padding-top: 1.2rem; margin-bottom: 1.4rem; }
+  .t-author { display: flex; align-items: center; gap: 12px; }
+  .t-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; color: var(--white); flex-shrink: 0; }
+  .av1 { background: var(--rose); }
+  .av2 { background: var(--gold); }
+  .av3 { background: #4A8A60; }
+  .t-name { font-weight: 700; font-size: 0.9rem; color: var(--text); }
+  .t-role { font-size: 0.8rem; color: var(--text-muted); }
+  .t-stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 0.3rem; }
+
+  .donate-cta { background: linear-gradient(135deg, var(--rose-dark) 0%, var(--rose) 100%); color: var(--white); text-align: center; padding: 100px 5%; position: relative; overflow: hidden; }
+  .donate-cta::before { content: '♥ ♥ ♥'; position: absolute; top: 1rem; right: 3rem; font-size: 5rem; color: rgba(255,255,255,0.05); letter-spacing: 0.5rem; pointer-events: none; }
+  .donate-cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.2rem; max-width: 700px; margin-left: auto; margin-right: auto; color: var(--white); }
+  .donate-cta p { font-size: 1.1rem; color: rgba(255,255,255,0.8); max-width: 520px; margin: 0 auto 2.5rem; }
+  .donate-amounts { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+  .amount-btn { background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.5); color: var(--white); padding: 12px 28px; border-radius: 30px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.2s, border-color 0.2s, transform 0.15s; font-family: 'Lato', sans-serif; }
+  .amount-btn:hover, .amount-btn.active { background: var(--white); color: var(--rose); border-color: var(--white); transform: scale(1.05); }
+  .btn-donate-main { display: inline-block; background: var(--white); color: var(--rose); padding: 16px 44px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1rem; letter-spacing: 0.05em; text-transform: uppercase; box-shadow: 0 6px 24px rgba(0,0,0,0.2); transition: transform 0.15s, box-shadow 0.2s; }
+  .btn-donate-main:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(0,0,0,0.3); }
+
+  .newsletter { background: var(--cream); }
+  .newsletter-inner { max-width: 640px; margin: 0 auto; text-align: center; }
+  .nl-form { display: flex; gap: 0; margin-top: 2rem; border-radius: 40px; overflow: hidden; box-shadow: 0 4px 20px rgba(44,33,24,0.1); }
+  .nl-form input { flex: 1; padding: 16px 24px; border: none; outline: none; font-family: 'Lato', sans-serif; font-size: 0.95rem; background: var(--white); color: var(--text); }
+  .nl-form button { background: var(--rose); color: var(--white); border: none; padding: 16px 28px; font-family: 'Lato', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+  .nl-form button:hover { background: var(--rose-dark); }
+
+  footer { background: var(--text); color: rgba(255,255,255,0.7); padding: 60px 5% 32px; }
+  .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .footer-brand .nav-logo { color: var(--white); font-size: 1.2rem; margin-bottom: 1rem; display: inline-flex; }
+  .footer-brand p { font-size: 0.9rem; line-height: 1.7; color: rgba(255,255,255,0.55); max-width: 280px; }
+  .footer-col h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 1.2rem; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.7rem; }
+  .footer-col ul a { text-decoration: none; color: rgba(255,255,255,0.55); font-size: 0.9rem; transition: color 0.2s; }
+  .footer-col ul a:hover { color: var(--gold); }
+  .footer-bottom { max-width: 1100px; margin: 0 auto; padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: rgba(255,255,255,0.35); }
+  .social-links { display: flex; gap: 1rem; }
+  .social-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+  .social-links a:hover { color: var(--gold); }
+
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .delay-1 { transition-delay: 0.15s; }
+  .delay-2 { transition-delay: 0.3s; }
+  .delay-3 { transition-delay: 0.45s; }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-image-wrap { display: none; }
+    .mission-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .stats-grid { grid-template-columns: repeat(2,1fr); }
+    .programs-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav role="navigation" aria-label="Main navigation">
+  <a class="nav-logo" href="#home">
+    <span class="heart" aria-hidden="true">♥</span>
+    The Love Now Foundation
+  </a>
+  <ul class="nav-links">
+    <li><a href="#mission">Our Mission</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#stories">Stories</a></li>
+    <li><a href="#donate" class="btn-donate-nav">Donate</a></li>
+  </ul>
+</nav>
+
+<section id="home" class="hero" aria-label="Hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <span class="hero-tag">Nonprofit Organization · Est. 2018</span>
+      <h1>Spreading <em>Love.</em><br>Building Community.<br>Changing Lives.</h1>
+      <p>The Love Now Foundation believes that every person deserves compassion, connection, and the opportunity to thrive. We're on a mission to show up, give back, and love now — not later.</p>
+      <div class="hero-btns">
+        <a href="#donate" class="btn-primary">Donate Today</a>
+        <a href="#programs" class="btn-secondary">Our Programs</a>
+      </div>
+    </div>
+    <div class="hero-image-wrap" aria-hidden="true">
+      <div class="hero-img-card">
+        <div class="hero-img-placeholder">
+          <div class="big-heart">♥</div>
+          <p>Love in Action</p>
+        </div>
+      </div>
+      <div class="hero-stat-pill">
+        <div class="pill-num">12K+</div>
+        <div class="pill-label">Lives<br>Touched</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <span class="ticker-inner">
+    Spreading Love Across Communities <span class="ticker-dot">◆</span> Empowering Families &amp; Individuals <span class="ticker-dot">◆</span> Mental Health &amp; Wellness Support <span class="ticker-dot">◆</span> Youth Empowerment Programs <span class="ticker-dot">◆</span> Community Outreach Every Day <span class="ticker-dot">◆</span> Love Is Always the Answer <span class="ticker-dot">◆</span> Spreading Love Across Communities <span class="ticker-dot">◆</span> Empowering Families &amp; Individuals <span class="ticker-dot">◆</span> Mental Health &amp; Wellness Support <span class="ticker-dot">◆</span> Youth Empowerment Programs <span class="ticker-dot">◆</span> Community Outreach Every Day <span class="ticker-dot">◆</span> Love Is Always the Answer <span class="ticker-dot">◆</span>
+  </span>
+</div>
+
+<section id="mission" aria-labelledby="mission-heading">
+  <div class="mission-grid">
+    <div class="fade-up">
+      <span class="section-tag">Who We Are</span>
+      <h2 class="section-title" id="mission-heading">Love is Not Just a Feeling — It's an Action</h2>
+      <p class="section-lead">Founded on the belief that love, when put into practice, has the power to heal communities, restore dignity, and ignite lasting change. We show up because people matter.</p>
+      <a href="#programs" class="btn-primary">See Our Work</a>
+    </div>
+    <div class="mission-visual">
+      <div class="mcard fade-up delay-1">
+        <div class="mcard-icon">♥</div>
+        <h3>Compassionate Care</h3>
+        <p>We meet people where they are — with warmth, dignity, and zero judgment. Compassion is our foundation.</p>
+      </div>
+      <div class="mcard fade-up delay-2">
+        <div class="mcard-icon">🌱</div>
+        <h3>Community Growth</h3>
+        <p>Building sustainable programs that help communities grow stronger from the inside out.</p>
+      </div>
+      <div class="mcard fade-up delay-3">
+        <div class="mcard-icon">✨</div>
+        <h3>Lasting Impact</h3>
+        <p>Every act of love creates ripples. We focus on long-term transformation, not just short-term relief.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="impact" class="impact" aria-labelledby="impact-heading">
+  <div class="impact-inner">
+    <div class="centered fade-up">
+      <span class="section-tag">Our Impact</span>
+      <h2 class="section-title" id="impact-heading" style="color:white; margin-left:auto; margin-right:auto;">Love Measured in Real Lives Changed</h2>
+      <p class="section-lead">Every number represents a person — a family, a child, a community. Here's what love has built.</p>
+    </div>
+    <div class="stats-grid fade-up">
+      <div class="stat-box"><div class="stat-num">12,400+</div><div class="stat-label">Lives Impacted</div></div>
+      <div class="stat-box"><div class="stat-num">47</div><div class="stat-label">Communities Served</div></div>
+      <div class="stat-box"><div class="stat-num">$2.1M</div><div class="stat-label">Resources Distributed</div></div>
+      <div class="stat-box"><div class="stat-num">850+</div><div class="stat-label">Volunteers &amp; Partners</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="programs" aria-labelledby="programs-heading">
+  <div class="programs-inner">
+    <div class="centered fade-up">
+      <span class="section-tag">What We Do</span>
+      <h2 class="section-title" id="programs-heading">Programs Rooted in Love</h2>
+      <p class="section-lead">Each of our programs is designed to address the whole person — mind, body, and spirit — with love at the center of everything we do.</p>
+    </div>
+    <div class="programs-grid">
+      <article class="prog-card fade-up delay-1">
+        <div class="prog-header ph1"><span class="prog-header-tag">Mental Wellness</span></div>
+        <div class="prog-body">
+          <h3>Healing Hearts Initiative</h3>
+          <p>Free mental health resources, peer support circles, and counseling services for individuals who cannot afford traditional care.</p>
+          <a href="#" class="prog-link">Learn More →</a>
+        </div>
+      </article>
+      <article class="prog-card fade-up delay-2">
+        <div class="prog-header ph2"><span class="prog-header-tag">Youth Empowerment</span></div>
+        <div class="prog-body">
+          <h3>Rise Up Youth Program</h3>
+          <p>Mentorship, skill-building workshops, and scholarships for young people aged 13–24 to help them discover their purpose and potential.</p>
+          <a href="#" class="prog-link">Learn More →</a>
+        </div>
+      </article>
+      <article class="prog-card fade-up delay-3">
+        <div class="prog-header ph3"><span class="prog-header-tag">Family Support</span></div>
+        <div class="prog-body">
+          <h3>Family Roots Program</h3>
+          <p>Essential resources, parenting workshops, food assistance, and community connection for families navigating hardship.</p>
+          <a href="#" class="prog-link">Learn More →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="stories" class="testimonials" aria-labelledby="stories-heading">
+  <div class="testimonials-inner">
+    <div class="centered fade-up">
+      <span class="section-tag">Stories of Love</span>
+      <h2 class="section-title" id="stories-heading">The People Behind the Numbers</h2>
+      <p class="section-lead">Every life changed is a story worth telling. Here are just a few of the voices from our community.</p>
+    </div>
+    <div class="testimonials-grid">
+      <blockquote class="t-card fade-up delay-1">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">The Love Now Foundation didn't just give me resources — they gave me back my sense of worth. I didn't know a nonprofit could feel like family until I found them.</p>
+        <div class="t-author">
+          <div class="t-avatar av1">MR</div>
+          <div><div class="t-name">Maria R.</div><div class="t-role">Program Participant, 2023</div></div>
+        </div>
+      </blockquote>
+      <blockquote class="t-card fade-up delay-2">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">I started volunteering here thinking I'd help others. Two years later, I realize this community has transformed me just as much as I've given to it.</p>
+        <div class="t-author">
+          <div class="t-avatar av2">JT</div>
+          <div><div class="t-name">James T.</div><div class="t-role">Volunteer &amp; Mentor</div></div>
+        </div>
+      </blockquote>
+      <blockquote class="t-card fade-up delay-3">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">The Rise Up program helped my daughter find her confidence and a full scholarship. We will never stop being grateful for what love in action truly looks like.</p>
+        <div class="t-author">
+          <div class="t-avatar av3">CA</div>
+          <div><div class="t-name">Carmen A.</div><div class="t-role">Parent, Youth Program</div></div>
+        </div>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section id="donate" class="donate-cta" aria-labelledby="donate-heading">
+  <h2 id="donate-heading">Your Love Can Change a Life Today</h2>
+  <p>100% of every dollar goes directly to our programs and the people who need them most. Give now — love can't wait.</p>
+  <div class="donate-amounts" role="group" aria-label="Select a donation amount">
+    <button class="amount-btn" onclick="setAmount(this)">$10</button>
+    <button class="amount-btn active" onclick="setAmount(this)">$25</button>
+    <button class="amount-btn" onclick="setAmount(this)">$50</button>
+    <button class="amount-btn" onclick="setAmount(this)">$100</button>
+    <button class="amount-btn" onclick="setAmount(this)">Other</button>
+  </div>
+  <a href="#" class="btn-donate-main">Donate with Love ♥</a>
+</section>
+
+<section class="newsletter" aria-labelledby="nl-heading">
+  <div class="newsletter-inner fade-up">
+    <span class="section-tag">Stay Connected</span>
+    <h2 class="section-title" id="nl-heading" style="max-width:100%">Join Our Community of Love</h2>
+    <p class="section-lead" style="max-width:100%">Get stories of impact, program updates, and ways to get involved delivered to your inbox. No spam — just love.</p>
+    <form class="nl-form" onsubmit="handleNL(event)" aria-label="Newsletter signup">
+      <input type="email" placeholder="Your email address" required aria-label="Email address">
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<footer role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="nav-logo" href="#home"><span class="heart" aria-hidden="true">♥</span> The Love Now Foundation</a>
+      <p>A 501(c)(3) nonprofit organization dedicated to spreading love through community action, mental wellness support, and youth empowerment.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#mission">Our Mission</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#impact">Our Impact</a></li>
+        <li><a href="#stories">Stories</a></li>
+        <li><a href="#donate">Donate</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="#">Volunteer</a></li>
+        <li><a href="#">Partner With Us</a></li>
+        <li><a href="#">Corporate Giving</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:hello@thelovenowfoundation.com">hello@thelovenow<br>foundation.com</a></li>
+        <li><a href="#">Press &amp; Media</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">EIN: 88-XXXXXXX</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 The Love Now Foundation. All rights reserved. 501(c)(3) Tax-Exempt Nonprofit.</span>
+    <div class="social-links" aria-label="Social media">
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function setAmount(el) {
+    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+  }
+  function handleNL(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = "You're In! ♥";
+    btn.style.background = '#3B6D11';
+    setTimeout(() => { btn.textContent = 'Subscribe'; btn.style.background = ''; }, 3000);
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
